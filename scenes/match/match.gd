@@ -6,6 +6,9 @@ var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
 const TOTAL_POINTS = 10
 var _next_hint = 0
 
+func _ready() -> void:
+	_show_hint()
+
 func _show_hint():
 	var hint = hint_scene.instantiate()
 	hint.points = TOTAL_POINTS - _next_hint
