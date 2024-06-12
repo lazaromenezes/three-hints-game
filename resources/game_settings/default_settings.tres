@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://cfe7ob78c0g3c"]
+
+[ext_resource type="Script" path="res://resources/game_settings/game_settings.gd" id="1_mkv45"]
+
+[resource]
+script = ExtResource("1_mkv45")
+start_time = 2.0
+hint_time = 15.0
