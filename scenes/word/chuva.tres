@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://hqbjrm5deggm"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_x4urp"]
+
+[resource]
+script = ExtResource("1_x4urp")
+first_hint = "Céu"
+second_hint = "Fenômeno"
+third_hint = "Dia vira noite"
+accepted_answers = Array[String](["Chuva"])
