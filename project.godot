@@ -12,7 +12,7 @@ config_version=5
 
 config/name="pistas"
 config/tags=PackedStringArray("prototype", "v4.3")
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/timed_match/timed_match.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

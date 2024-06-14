@@ -1,6 +1,6 @@
 extends Control
 
-signal hint_expired()
+signal timed_up()
 
 @export var hint: String:
 	set(value):
@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 	%Progress.value = $HintTime.time_left / GameManager.settings.hint_time
 
 func _on_timer_timeout() -> void:
-	hint_expired.emit()
+	timed_up.emit()

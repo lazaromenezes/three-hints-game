@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_hhuks")
-start_time = 0.5
+match_start_time = 1.0
+word_start_time = 0.5
 hint_time = 5.0
+words_per_match = 5

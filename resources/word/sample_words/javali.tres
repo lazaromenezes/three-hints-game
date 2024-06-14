@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://c42pyoej58pq"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_olovk"]
+
+[resource]
+script = ExtResource("1_olovk")
+first_hint = "MAMÍFERO"
+second_hint = "MANADA"
+third_hint = "PARENTE DO PORCO"
+accepted_answers = Array[String](["JAVALI"])

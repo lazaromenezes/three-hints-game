@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://dwtkdny6d6yb2"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_festg"]
+
+[resource]
+script = ExtResource("1_festg")
+first_hint = "JESUS"
+second_hint = "MULTIPLICAÇÃO"
+third_hint = "ALIMENTO"
+accepted_answers = Array[String](["pão", "pao"])

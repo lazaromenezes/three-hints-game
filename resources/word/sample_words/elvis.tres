@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://3dsoneckl356"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_vn55g"]
+
+[resource]
+script = ExtResource("1_vn55g")
+first_hint = "CANTOR AMERICANO"
+second_hint = "TOPETE"
+third_hint = "REI DO ROCK"
+accepted_answers = Array[String](["elvis", "elvis presley"])

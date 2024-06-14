@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://83vcqxqi04h5"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_d2xl0"]
+
+[resource]
+script = ExtResource("1_d2xl0")
+first_hint = "TEM CORDAS"
+second_hint = "TEM MARTELO"
+third_hint = "TEM TECLAS"
+accepted_answers = Array[String](["PIANO"])

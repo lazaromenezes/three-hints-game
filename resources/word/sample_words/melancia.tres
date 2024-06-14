@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://bpju0ni4tvrl6"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_cq7su"]
+
+[resource]
+script = ExtResource("1_cq7su")
+first_hint = "VERMELHA POR DENTRO"
+second_hint = "VERDE POR FORA"
+third_hint = "FRUTA GRANDE"
+accepted_answers = Array[String](["MELANCIA"])

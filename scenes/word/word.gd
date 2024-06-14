@@ -1,6 +1,9 @@
 extends Control
 
-var word: Word = preload("res://scenes/word/chuva.tres")
+signal timed_up()
+signal guessed_right(points: int)
+
+@export var word: Word
 var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
 
 const TOTAL_POINTS: int = 10
@@ -9,23 +12,30 @@ var _current_points: int = TOTAL_POINTS
 var _hints: Array[String] = []
 
 func _ready() -> void:
-	$StartTimer.start(GameManager.settings.start_time)
+	$StartTimer.start(GameManager.settings.word_start_time)
 	_hints = word.hints
 
 func _show_hint():
 	var hint = hint_scene.instantiate()
 	hint.hint = _hints.pop_front()
-	hint.hint_expired.connect(_on_hint_expired)
+	hint.timed_up.connect(_on_hint_expired)
 	%Hints.add_child(hint)
 	
 func _on_hint_expired():
 	if _hints.size() > 0:
 		_current_points -= 1
 		_next_hint()
+	else:
+		timed_up.emit()
 
 func _on_start_timeout() -> void:
+	%GuessArea.show()
 	_next_hint()
-	
+
 func _next_hint() -> void:
 	%Points.text = str(_current_points)
 	_show_hint()
+
+func _on_guess_area_guessed(guess: String) -> void:
+	if guess in word.cleaned_accepted_answers:
+		guessed_right.emit(_current_points)

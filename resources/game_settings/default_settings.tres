@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_mkv45")
-start_time = 2.0
+match_start_time = 3.0
+word_start_time = 0.5
 hint_time = 15.0
+words_per_match = 6

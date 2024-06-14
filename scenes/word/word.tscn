@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdj47x8vx74qa"]
+[gd_scene load_steps=3 format=3 uid="uid://cdj47x8vx74qa"]
 
 [ext_resource type="Script" path="res://scenes/word/word.gd" id="1_i11g1"]
+[ext_resource type="PackedScene" uid="uid://cqcx406jvesd6" path="res://scenes/guess_area/guess_area.tscn" id="2_kb86k"]
 
-[node name="Match" type="Control"]
-layout_direction = 2
-layout_mode = 3
+[node name="Word" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,25 +11,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i11g1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Points" type="Label" parent="VBoxContainer"]
+[node name="Points" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hints" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Hints" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GuessArea" parent="." instance=ExtResource("2_kb86k")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="guessed" from="GuessArea" to="." method="_on_guess_area_guessed"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timeout"]

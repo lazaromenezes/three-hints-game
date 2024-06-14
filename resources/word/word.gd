@@ -10,3 +10,10 @@ class_name Word
 var hints: Array[String]:
 	get:
 		return [first_hint, second_hint, third_hint]
+
+var cleaned_accepted_answers: Array:
+	get:
+		return accepted_answers.map(_clean_up)
+		
+func _clean_up(text: String):
+	return text.to_upper()

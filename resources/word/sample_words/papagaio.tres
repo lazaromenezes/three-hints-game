@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Word" load_steps=2 format=3 uid="uid://bhhvhqn3wcou5"]
+
+[ext_resource type="Script" path="res://resources/word/word.gd" id="1_df4ge"]
+
+[resource]
+script = ExtResource("1_df4ge")
+first_hint = "AVE"
+second_hint = "VERDE"
+third_hint = "IMITA VOZ"
+accepted_answers = Array[String](["PAPAGAIO"])
