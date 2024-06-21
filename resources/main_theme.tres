@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dr33k4lxxp4rf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4u1d"]
+bg_color = Color(0.109804, 0.623529, 0.843137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ldey"]
+bg_color = Color(0.933333, 0.152941, 0.278431, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.301961, 0.301961, 0.301961, 0.517647)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0.811765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkhc5"]
+bg_color = Color(0.0862745, 0.733333, 0.466667, 1)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_k4u1d")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0ldey")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pkhc5")
+VBoxContainer/constants/separation = 10
+VBoxHintList/base_type = &"VBoxContainer"
+VBoxHintList/constants/separation = 15
