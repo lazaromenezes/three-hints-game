@@ -1,4 +1,35 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dr33k4lxxp4rf"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dr33k4lxxp4rf"]
+
+[ext_resource type="FontFile" uid="uid://btmr2ditohrsw" path="res://assets/fonts/ArchivoBlack-Regular.ttf" id="1_ijqm8"]
+[ext_resource type="Texture2D" uid="uid://bnelb7d0hc1nt" path="res://assets/kenney_ui/green_button_rectangle_depth_gradient.png" id="1_mo8jo"]
+[ext_resource type="Texture2D" uid="uid://ba1mlplmbrqec" path="res://assets/kenney_ui/green_button_rectangle_gradient.png" id="2_w8d2p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e553h"]
+content_margin_top = 10.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_mo8jo")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qmv3"]
+content_margin_top = 10.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_mo8jo")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2vslq"]
+content_margin_top = 10.0
+content_margin_bottom = 15.0
+texture = ExtResource("2_w8d2p")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4u1d"]
 bg_color = Color(0.109804, 0.623529, 0.843137, 1)
@@ -6,6 +37,13 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhhy0"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ldey"]
 bg_color = Color(0.933333, 0.152941, 0.278431, 1)
@@ -28,9 +66,30 @@ shadow_color = Color(0, 0, 0, 0.811765)
 bg_color = Color(0.0862745, 0.733333, 0.466667, 1)
 
 [resource]
+default_font = ExtResource("1_ijqm8")
+default_font_size = 32
+BigUiButton/base_type = &"Button"
+BigUiButton/constants/outline_size = 2
+BigUiButton/font_sizes/font_size = 32
+BigUiButton/styles/hover = SubResource("StyleBoxTexture_e553h")
+BigUiButton/styles/normal = SubResource("StyleBoxTexture_2qmv3")
+BigUiButton/styles/pressed = SubResource("StyleBoxTexture_2vslq")
+HomeBigLabel/base_type = &"Label"
+HomeBigLabel/font_sizes/font_size = 128
+LabelBigHeader/base_type = &"Label"
+LabelBigHeader/font_sizes/font_size = 128
+LabelSummaryData/base_type = &"Label"
+LabelSummaryData/font_sizes/font_size = 48
+LabelSummaryHeader/base_type = &"Label"
+LabelSummaryHeader/font_sizes/font_size = 32
 Panel/styles/panel = SubResource("StyleBoxFlat_k4u1d")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_qhhy0")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_0ldey")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_pkhc5")
 VBoxContainer/constants/separation = 10
 VBoxHintList/base_type = &"VBoxContainer"
 VBoxHintList/constants/separation = 15
+VBoxHome/base_type = &"VBoxContainer"
+VBoxHome/constants/separation = 20
+VBoxSummary/base_type = &"VBoxContainer"
+VBoxSummary/constants/separation = 25

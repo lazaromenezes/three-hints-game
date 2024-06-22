@@ -5,14 +5,10 @@ extends Control
 var _match_words: Array[Word]
 var _word_scene: PackedScene = preload("res://scenes/word/word.tscn")
 
-var _total_points: int = 0:
-	set(value):
-		%Points.text = str(value)
-		_total_points = value
-
 func _ready() -> void:
 	$StartTimer.start(GameManager.settings.match_start_time)
 	_match_words = offline_word_provider.take_random(GameManager.settings.words_per_match)
+	GameManager.new_session()
 
 func _on_start_timer_timeout() -> void:
 	_next_word()
@@ -25,7 +21,7 @@ func _next_word():
 		var word = _pop_random_word()
 		_add_word_scene(word)
 	else:
-		get_tree().change_scene_to_file("res://scenes/game_over/game_over.tscn")
+		SceneManager.transition_to("summary")
 
 func _clear_container():
 	var word_scene = %WordContainer.get_child(0)
@@ -46,6 +42,8 @@ func _add_word_scene(word: Word):
 func _on_word_timed_up():
 	_next_word()
 
-func _on_word_guessed_correctly(points: int):
-	_total_points += points
+func _on_word_guessed_correctly(points: int, used_time: float):
+	GameManager.session.total_points += points
+	GameManager.session.total_time += used_time
+	%Points.text = str(GameManager.session.total_points)
 	_next_word()

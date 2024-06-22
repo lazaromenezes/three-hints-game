@@ -1,7 +1,7 @@
 extends Control
 
 signal timed_up()
-signal guessed_right(points: int)
+signal guessed_right(points: int, used_time: float)
 
 @export var word: Word
 var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
@@ -9,11 +9,15 @@ var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
 const TOTAL_POINTS: int = 10
 
 var _current_points: int = TOTAL_POINTS
+var _total_time: float = 0
 var _hints: Array[String] = []
 
 func _ready() -> void:
 	$StartTimer.start(GameManager.settings.word_start_time)
 	_hints = word.hints
+
+func _process(delta: float) -> void:
+	_total_time += delta
 
 func _show_hint():
 	var hint = hint_scene.instantiate()
@@ -38,4 +42,4 @@ func _next_hint() -> void:
 
 func _on_guess_area_guessed(guess: String) -> void:
 	if guess in word.cleaned_accepted_answers:
-		guessed_right.emit(_current_points)
+		guessed_right.emit(_current_points, _total_time)

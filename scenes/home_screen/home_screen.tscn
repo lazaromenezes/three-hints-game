@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo0a1tladde2a"]
+
+[ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_wnwvd"]
+[ext_resource type="Script" path="res://scenes/home_screen/home_screen.gd" id="2_lbgop"]
+
+[node name="HomeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wnwvd")
+script = ExtResource("2_lbgop")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"VBoxHome"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HomeBigLabel"
+text = "PISTAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoloGame" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BigUiButton"
+text = "Jogo Solo
+"
+
+[node name="Multiplayer" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BigUiButton"
+disabled = true
+text = "Multiplayer"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BigUiButton"
+text = "Sair
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/SoloGame" to="." method="_on_solo_game_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

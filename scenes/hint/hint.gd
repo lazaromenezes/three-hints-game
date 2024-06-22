@@ -2,6 +2,10 @@ extends Control
 
 signal timed_up()
 
+var remaining_time: float:
+	get():
+		return $HintTime.time_left
+
 @export var hint: String:
 	set(value):
 		hint = value

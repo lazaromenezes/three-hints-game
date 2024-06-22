@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Control
 
 signal guessed(guess: String)
 

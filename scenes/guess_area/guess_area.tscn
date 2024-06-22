@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/guess_area/guess_area.gd" id="1_ijry6"]
 
-[node name="GuessArea" type="HBoxContainer"]
+[node name="GuessArea" type="VBoxContainer"]
+offset_right = 407.0
+offset_bottom = 58.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ijry6")
@@ -10,6 +12,7 @@ script = ExtResource("1_ijry6")
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Sua Resposta"
+horizontal_alignment = 1
 
 [node name="Guess" type="LineEdit" parent="."]
 unique_name_in_owner = true
@@ -22,6 +25,5 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="text_submitted" from="Guess" to="." method="_on_guess_text_submitted"]
 [connection signal="visibility_changed" from="Guess" to="." method="_on_guess_visibility_changed"]
