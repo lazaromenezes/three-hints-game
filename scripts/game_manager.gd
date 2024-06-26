@@ -2,6 +2,8 @@ extends Node
 
 @export var settings: GameSettings
 
+var session: GameSession
+
 func _ready() -> void:
 	if OS.has_feature("editor"):
 		settings = load("res://resources/game_settings/debug_settings.tres")
@@ -11,10 +13,7 @@ func _ready() -> void:
 func new_session():
 	session = GameSession.new()
 
-var session: GameSession
-
 class GameSession:
-	
 	const TIME_TEMPLATE: String = "%02d:%02d.%03d"
 	
 	var total_points: int

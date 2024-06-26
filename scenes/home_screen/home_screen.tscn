@@ -52,7 +52,6 @@ text = "Jogo Solo
 [node name="Multiplayer" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BigUiButton"
-disabled = true
 text = "Multiplayer"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
@@ -62,4 +61,5 @@ text = "Sair
 "
 
 [connection signal="pressed" from="Panel/VBoxContainer/SoloGame" to="." method="_on_solo_game_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

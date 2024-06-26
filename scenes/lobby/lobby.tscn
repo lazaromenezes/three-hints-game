@@ -1,0 +1,128 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddt20vm5mbnqo"]
+
+[ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_ybfgy"]
+[ext_resource type="Script" path="res://scenes/lobby/lobby.gd" id="2_p7s1r"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ybfgy")
+script = ExtResource("2_p7s1r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "NOME: "
+
+[node name="PlayerName" type="LineEdit" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HostGame" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CRIAR PARTIDA"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "HOST: "
+
+[node name="HostAddress" type="LineEdit" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Join" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ENTRAR"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "COMEÇAR"
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Jogadores"
+horizontal_alignment = 1
+
+[node name="ConnectedPlayers" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer2/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/HostGame" to="." method="_on_host_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
