@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfqkvl34oojvk"]
+
+[ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_odc2v"]
+[ext_resource type="Script" path="res://scenes/summary/multiplayer/multiplayer_summary.gd" id="2_2fy72"]
+
+[node name="MultiplayerSummary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_odc2v")
+script = ExtResource("2_2fy72")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -202.0
+offset_right = 250.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"VBoxSummary"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelBigHeader"
+text = "FIM!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RankList" type="VBoxContainer" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"BigUiButton"
+text = "Menu Principal"
+
+[connection signal="pressed" from="Panel/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

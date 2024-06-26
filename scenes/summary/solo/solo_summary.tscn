@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://nrbm68u42iwn"]
 
 [ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_hwi11"]
-[ext_resource type="Script" path="res://scenes/summary/solo_game/solo_game_summary.gd" id="2_t15q2"]
+[ext_resource type="Script" path="res://scenes/summary/solo/solo_summary.gd" id="2_t15q2"]
 
 [node name="SoloGameSummary" type="Control"]
 layout_mode = 3

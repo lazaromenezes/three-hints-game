@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq4ur3ye3xadt"]
+
+[ext_resource type="Script" path="res://scenes/rank_entry/rank_entry.gd" id="1_rgbc2"]
+
+[node name="RankEntry" type="VBoxContainer"]
+script = ExtResource("1_rgbc2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Rank" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1. "
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Nome"
+
+[node name="Points" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "### "
+
+[node name="Time" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "##:##.###"

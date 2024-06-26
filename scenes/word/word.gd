@@ -1,11 +1,11 @@
 extends Control
 
-signal timed_up()
+signal timed_up(used_time: float)
 signal guessed_right(points: int, used_time: float)
 
 @export var word: Word
-var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
 
+var hint_scene: PackedScene = preload("res://scenes/hint/hint.tscn")
 const TOTAL_POINTS: int = 10
 
 var _current_points: int = TOTAL_POINTS
@@ -30,7 +30,7 @@ func _on_hint_expired():
 		_current_points -= 1
 		_next_hint()
 	else:
-		timed_up.emit()
+		timed_up.emit(_total_time)
 
 func _on_start_timeout() -> void:
 	%GuessArea.show()
