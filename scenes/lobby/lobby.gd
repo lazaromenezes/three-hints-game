@@ -3,7 +3,7 @@ extends Control
 @onready var offline_word_provider: OfflineWordProvider = $OfflineWordProvider
 
 func _ready() -> void:
-	MultiplayerGameManager.player_connected.connect(_on_player_connected)
+	MultiplayerGameManager.room_joined.connect(_on_player_connected)
 	MultiplayerGameManager.room_created.connect(_on_room_created)
 
 func _on_room_created(id: String) -> void:
@@ -16,22 +16,16 @@ func _on_host_game_pressed() -> void:
 
 func _on_join_pressed() -> void:
 	var player_name = %PlayerName.text
-	var host = %HostAddress.text if not %HostAddress.text.is_empty() else "127.0.0.1"
 	
-	MultiplayerGameManager.join_room(host, player_name)
+	MultiplayerGameManager.join_room(%RoomId.text, player_name)
 
-func _on_player_connected() -> void:
-	%ConnectedPlayers.get_children().all(func (c): c.queue_free())
-	
-	_update_player_list.call_deferred()
-
-func _update_player_list():
+func _on_player_connected(player_name: String) -> void:
 	var player_label = Label.new()
-	player_label.text = MultiplayerGameManager.session.player_name
+	player_label.text = player_name
 	%ConnectedPlayers.add_child(player_label)
 
 func _on_play_pressed() -> void:
 	var words: Array[Word] = offline_word_provider.take_random(5)
 	var words_package: PackedByteArray = var_to_bytes_with_objects(words)
-	MultiplayerGameManager.set_words.rpc(words_package)
-	MultiplayerGameManager.start_game.rpc()
+	
+	MultiplayerGameManager.request_start(words_package)
