@@ -1,12 +1,7 @@
-extends Control
+extends Node
 
 func _ready() -> void:
-	SceneManager.load_scenes()
-
-func _process(_delta) -> void:
-	var progress = SceneManager.report_status()
-	
-	%Progress.value = progress
-	
-	if progress == 1:
-		SceneManager.transition_to("home")
+	if ServerManager.configuration.is_server:
+		MultiplayerGameManager.start_dedicated_server()
+	else:
+		SceneManager.transition_to.call_deferred("home")
