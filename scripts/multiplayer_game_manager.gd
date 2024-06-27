@@ -61,7 +61,7 @@ func join_room(room_id: String, player_name: String):
 	await multiplayer.connected_to_server
 	enter_room.rpc_id(SERVER_PEER, room_id, player_name)
 	current_room = room_id
-	
+
 @rpc("any_peer", "reliable")
 func enter_room(room: String, player_name: String):
 	var sender_id = multiplayer.get_remote_sender_id()

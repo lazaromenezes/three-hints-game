@@ -21,5 +21,5 @@ class Configuration:
 	func _init():
 		port = 1609
 		is_server = false
-		host = "127.0.0.1"
+		host = "165.227.102.174"
 		max_clients = 2048

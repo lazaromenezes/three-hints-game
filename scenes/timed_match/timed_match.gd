@@ -34,7 +34,7 @@ func _pop_random_word():
 
 func _add_word_scene(word: Word):
 	var word_scene = _word_scene.instantiate()
-	word_scene.word_data = word
+	word_scene.word = word
 	word_scene.timed_up.connect(_on_word_timed_up)
 	word_scene.guessed_right.connect(_on_word_guessed_correctly)
 	%WordContainer.add_child(word_scene)
