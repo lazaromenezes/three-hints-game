@@ -21,5 +21,5 @@ class Configuration:
 	func _init():
 		port = 1609
 		is_server = false
-		host = "165.227.102.174"
+		host = "nyc.pistas.manjei.com.br"
 		max_clients = 2048
