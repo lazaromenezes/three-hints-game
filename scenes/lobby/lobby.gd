@@ -1,7 +1,5 @@
 extends Control
 
-@onready var offline_word_provider: OfflineWordProvider = $OfflineWordProvider
-
 func _ready() -> void:
 	MultiplayerGameManager.room_joined.connect(_on_player_connected)
 	MultiplayerGameManager.room_created.connect(_on_room_created)
@@ -25,7 +23,4 @@ func _on_player_connected(player_name: String) -> void:
 	%ConnectedPlayers.add_child(player_label)
 
 func _on_play_pressed() -> void:
-	var words: Array[Word] = offline_word_provider.take_random(5)
-	var words_package: PackedByteArray = var_to_bytes_with_objects(words)
-	
-	MultiplayerGameManager.request_start(words_package)
+	MultiplayerGameManager.request_start()

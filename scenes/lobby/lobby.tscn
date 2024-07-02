@@ -1,16 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddt20vm5mbnqo"]
+[gd_scene load_steps=3 format=3 uid="uid://ddt20vm5mbnqo"]
 
 [ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_ybfgy"]
 [ext_resource type="Script" path="res://scenes/lobby/lobby.gd" id="2_p7s1r"]
-[ext_resource type="Script" path="res://scripts/offline_word_provider.gd" id="3_dm6kt"]
-[ext_resource type="Script" path="res://resources/word/word.gd" id="4_exuvb"]
-[ext_resource type="Resource" uid="uid://hqbjrm5deggm" path="res://resources/word/sample_words/chuva.tres" id="5_760v5"]
-[ext_resource type="Resource" uid="uid://3dsoneckl356" path="res://resources/word/sample_words/elvis.tres" id="6_uouxw"]
-[ext_resource type="Resource" uid="uid://c42pyoej58pq" path="res://resources/word/sample_words/javali.tres" id="7_kf1qe"]
-[ext_resource type="Resource" uid="uid://bpju0ni4tvrl6" path="res://resources/word/sample_words/melancia.tres" id="8_ad28n"]
-[ext_resource type="Resource" uid="uid://dwtkdny6d6yb2" path="res://resources/word/sample_words/pao.tres" id="9_m6ex4"]
-[ext_resource type="Resource" uid="uid://bhhvhqn3wcou5" path="res://resources/word/sample_words/papagaio.tres" id="10_k7hhq"]
-[ext_resource type="Resource" uid="uid://83vcqxqi04h5" path="res://resources/word/sample_words/piano.tres" id="11_lyls5"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -139,10 +130,6 @@ size_flags_vertical = 3
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-
-[node name="OfflineWordProvider" type="Node" parent="."]
-script = ExtResource("3_dm6kt")
-words = Array[ExtResource("4_exuvb")]([ExtResource("5_760v5"), ExtResource("6_uouxw"), ExtResource("7_kf1qe"), ExtResource("8_ad28n"), ExtResource("9_m6ex4"), ExtResource("10_k7hhq"), ExtResource("11_lyls5")])
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelContainer/Panel/VBoxContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]

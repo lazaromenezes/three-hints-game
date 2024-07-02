@@ -8,3 +8,5 @@ match_start_time = 1.0
 word_start_time = 0.5
 hint_time = 5.0
 words_per_match = 5
+is_online = true
+words_endpoint = "http://localhost:8080/words?amount=%s"

@@ -13,6 +13,9 @@ func _ready() -> void:
 func new_session():
 	session = GameSession.new()
 
+func pick_words():
+	return await WordProvider.get_words()
+
 class GameSession:
 	const TIME_TEMPLATE: String = "%02d:%02d.%03d"
 	

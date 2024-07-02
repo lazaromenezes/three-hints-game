@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv4nrbyg750jq"]
+
+[ext_resource type="Script" path="res://scenes/word_provider/word_provider.gd" id="1_i6pgv"]
+[ext_resource type="Script" path="res://scripts/offline_word_provider.gd" id="2_0nk1d"]
+[ext_resource type="Script" path="res://scripts/online_word_provider.gd" id="3_kvmud"]
+
+[node name="WordProvider" type="Node"]
+script = ExtResource("1_i6pgv")
+
+[node name="OfflineWordProvider" type="Node" parent="."]
+script = ExtResource("2_0nk1d")
+
+[node name="OnlineWordProvider" type="Node" parent="."]
+script = ExtResource("3_kvmud")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="OnlineWordProvider"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://csxws0ml1no5v"]
+
+[ext_resource type="Script" path="res://scenes/timed_match/timed_match.gd" id="1_5o60s"]
+[ext_resource type="Script" path="res://scripts/offline_word_provider.gd" id="1_nrwte"]
+[ext_resource type="Theme" uid="uid://dr33k4lxxp4rf" path="res://resources/main_theme.tres" id="1_nxcvi"]
+[ext_resource type="Script" path="res://resources/word/word.gd" id="2_4mr3s"]
+[ext_resource type="Resource" uid="uid://hqbjrm5deggm" path="res://resources/word/sample_words/chuva.tres" id="3_5dca7"]
+[ext_resource type="Resource" uid="uid://3dsoneckl356" path="res://resources/word/sample_words/elvis.tres" id="4_agbre"]
+[ext_resource type="Resource" uid="uid://c42pyoej58pq" path="res://resources/word/sample_words/javali.tres" id="5_0vam8"]
+[ext_resource type="Resource" uid="uid://bpju0ni4tvrl6" path="res://resources/word/sample_words/melancia.tres" id="6_3fuh8"]
+[ext_resource type="Resource" uid="uid://dwtkdny6d6yb2" path="res://resources/word/sample_words/pao.tres" id="7_4mk16"]
+[ext_resource type="Resource" uid="uid://bhhvhqn3wcou5" path="res://resources/word/sample_words/papagaio.tres" id="8_yknt8"]
+[ext_resource type="Resource" uid="uid://83vcqxqi04h5" path="res://resources/word/sample_words/piano.tres" id="9_c6o0p"]
+
+[node name="TimedMatch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nxcvi")
+script = ExtResource("1_5o60s")
+
+[node name="OfflineWordProvider" type="Node" parent="."]
+script = ExtResource("1_nrwte")
+words = Array[ExtResource("2_4mr3s")]([ExtResource("3_5dca7"), ExtResource("4_agbre"), ExtResource("5_0vam8"), ExtResource("6_3fuh8"), ExtResource("7_4mk16"), ExtResource("8_yknt8"), ExtResource("9_c6o0p")])
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Total: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="Panel/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WordContainer" type="AspectRatioContainer" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

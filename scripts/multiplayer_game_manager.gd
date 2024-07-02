@@ -89,15 +89,17 @@ func _join_host(player_name: String):
 		multiplayer.multiplayer_peer = peer
 		session = GameSession.new(multiplayer.get_unique_id(), player_name)
 
-func request_start(words_package: PackedByteArray):
-	start_room.rpc_id(SERVER_PEER, current_room, words_package)
+func request_start():
+	start_room.rpc_id(SERVER_PEER, current_room)
 
 @rpc("any_peer", "reliable")
-func start_room(room_id: String, words_package: PackedByteArray):
+func start_room(room_id: String):
 	var room = rooms[room_id]
 	
+	var _words = await WordProvider.get_words()
+	
 	for player in room.sessions:
-		set_words.rpc_id(player, words_package)
+		set_words.rpc_id(player, var_to_bytes(_words))
 		start_game.rpc_id(player)
 
 @rpc("authority", "reliable")
