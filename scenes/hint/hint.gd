@@ -12,10 +12,10 @@ var remaining_time: float:
 		%HintText.text = value
 
 func _ready() -> void:
-	$HintTime.start(GameManager.settings.hint_time)
+	$HintTime.start(ConfigurationProvider.settings.hint_time)
 
 func _process(_delta: float) -> void:
-	%Progress.value = $HintTime.time_left / GameManager.settings.hint_time
+	%Progress.value = $HintTime.time_left / ConfigurationProvider.settings.hint_time
 
 func _on_timer_timeout() -> void:
 	timed_up.emit()

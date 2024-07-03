@@ -13,7 +13,7 @@ var _total_time: float = 0
 var _hints: Array[String] = []
 
 func _ready() -> void:
-	$StartTimer.start(GameManager.settings.word_start_time)
+	$StartTimer.start(ConfigurationProvider.settings.word_start_time)
 	_hints = word.hints
 
 func _process(delta: float) -> void:

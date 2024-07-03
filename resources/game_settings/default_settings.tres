@@ -4,9 +4,12 @@
 
 [resource]
 script = ExtResource("1_mkv45")
-match_start_time = 3.0
+match_start_time = 2.0
 word_start_time = 0.5
-hint_time = 15.0
-words_per_match = 6
+hint_time = 7.0
+words_per_match = 8
 is_online = true
-words_endpoint = "http://localhost:8080/words?amount=%s"
+words_endpoint = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fc1a3f0d-8e9b-40ee-a0ad-655122674b8c/pistas/words?amount=%s"
+server_url = "nyc.pistas.manjei.com.br"
+server_port = 1609
+max_clients = 2048

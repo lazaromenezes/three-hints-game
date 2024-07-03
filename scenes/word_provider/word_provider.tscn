@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv4nrbyg750jq"]
+[gd_scene load_steps=12 format=3 uid="uid://dv4nrbyg750jq"]
 
 [ext_resource type="Script" path="res://scenes/word_provider/word_provider.gd" id="1_i6pgv"]
 [ext_resource type="Script" path="res://scripts/offline_word_provider.gd" id="2_0nk1d"]
+[ext_resource type="Script" path="res://resources/word/word.gd" id="3_c3dfb"]
 [ext_resource type="Script" path="res://scripts/online_word_provider.gd" id="3_kvmud"]
+[ext_resource type="Resource" uid="uid://hqbjrm5deggm" path="res://resources/word/sample_words/chuva.tres" id="4_aosga"]
+[ext_resource type="Resource" uid="uid://3dsoneckl356" path="res://resources/word/sample_words/elvis.tres" id="5_y47rp"]
+[ext_resource type="Resource" uid="uid://c42pyoej58pq" path="res://resources/word/sample_words/javali.tres" id="6_4mmfh"]
+[ext_resource type="Resource" uid="uid://bpju0ni4tvrl6" path="res://resources/word/sample_words/melancia.tres" id="7_lhfh2"]
+[ext_resource type="Resource" uid="uid://dwtkdny6d6yb2" path="res://resources/word/sample_words/pao.tres" id="8_r07us"]
+[ext_resource type="Resource" uid="uid://bhhvhqn3wcou5" path="res://resources/word/sample_words/papagaio.tres" id="9_ik3bp"]
+[ext_resource type="Resource" uid="uid://83vcqxqi04h5" path="res://resources/word/sample_words/piano.tres" id="10_l160k"]
 
 [node name="WordProvider" type="Node"]
 script = ExtResource("1_i6pgv")
 
 [node name="OfflineWordProvider" type="Node" parent="."]
 script = ExtResource("2_0nk1d")
+words = Array[ExtResource("3_c3dfb")]([ExtResource("4_aosga"), ExtResource("5_y47rp"), ExtResource("6_4mmfh"), ExtResource("7_lhfh2"), ExtResource("8_r07us"), ExtResource("9_ik3bp"), ExtResource("10_l160k")])
 
 [node name="OnlineWordProvider" type="Node" parent="."]
 script = ExtResource("3_kvmud")

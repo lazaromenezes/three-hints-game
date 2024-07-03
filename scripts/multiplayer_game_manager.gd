@@ -6,8 +6,6 @@ signal room_joined(name: String)
 
 const SERVER_PEER: int = 1
 
-@export var settings: GameSettings
-
 var session: GameSession
 var words: Array[Word]
 var rooms: Dictionary
@@ -15,20 +13,14 @@ var current_room: String
 var rank: Array[RankSummary] = []
 
 func _ready() -> void:
-	if OS.has_feature("editor"):
-		settings = load("res://resources/game_settings/debug_settings.tres")
-	else:
-		settings = load("res://resources/game_settings/default_settings.tres")
-	
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
-	#multiplayer.peer_connected.connect(_on_peer_connected)
 
 func start_dedicated_server():
 	rooms = {}
 	
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_server(ServerManager.configuration.port, ServerManager.configuration.max_clients)
+	peer.create_server(ConfigurationProvider.server.port, ConfigurationProvider.server.max_clients)
 	multiplayer.multiplayer_peer = peer
 
 func new_room(player_name: String):
@@ -81,7 +73,7 @@ func notify_room_joined(player_name: String):
 
 func _join_host(player_name: String):
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(ServerManager.configuration.host, ServerManager.configuration.port)
+	var error = peer.create_client(ConfigurationProvider.server.host, ConfigurationProvider.server.port)
 	
 	if error != OK:
 		print("Failed to join")
@@ -99,7 +91,7 @@ func start_room(room_id: String):
 	var _words = await WordProvider.get_words()
 	
 	for player in room.sessions:
-		set_words.rpc_id(player, var_to_bytes(_words))
+		set_words.rpc_id(player, var_to_bytes_with_objects(_words))
 		start_game.rpc_id(player)
 
 @rpc("authority", "reliable")
@@ -184,7 +176,7 @@ class RankSummary:
 	var formatted_time: String:
 		get():
 			return _format_time()
-	
+
 	func _init(player_name: String, total_points: int, total_time: float):
 		player = player_name
 		points = total_points
@@ -197,7 +189,7 @@ class RankSummary:
 		var milis: float = (time - floor(time)) * 1000
 		
 		return TIME_TEMPLATE % [minutes, seconds, milis]
-		
+
 	static func sort_rank(a: RankSummary, b: RankSummary):
 		if a.points == b.points:
 			return a.time < b.time

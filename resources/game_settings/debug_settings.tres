@@ -9,4 +9,7 @@ word_start_time = 0.5
 hint_time = 5.0
 words_per_match = 5
 is_online = true
-words_endpoint = "http://localhost:8080/words?amount=%s"
+words_endpoint = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-fc1a3f0d-8e9b-40ee-a0ad-655122674b8c/pistas/words?amount=%s"
+server_url = "localhost"
+server_port = 1609
+max_clients = 2048

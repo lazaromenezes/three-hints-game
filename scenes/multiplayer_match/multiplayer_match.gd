@@ -4,7 +4,7 @@ var _match_words: Array[Word]
 var _word_scene: PackedScene = preload("res://scenes/word/word.tscn")
 
 func _ready() -> void:
-	$StartTimer.start(GameManager.settings.match_start_time)
+	$StartTimer.start(ConfigurationProvider.settings.match_start_time)
 	_match_words = MultiplayerGameManager.words
 
 func _on_start_timer_timeout() -> void:
