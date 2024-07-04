@@ -1,0 +1,49 @@
+name: "Pistas Workflow"
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  prepare-builder:
+    name: Prepare builder environment
+    steps:
+      - uses: chickensoft-games/setup-godot@v1
+          name: 🤖 Setup Godot
+          with:
+            # Version must include major, minor, and patch, and be >= 4.0.0
+            # Pre-release label is optional.
+            version: 4.3.0-beta.2 # also valid: 4.0.0.rc1 or 4.0.0, etc
+            # Use .NET-enabled version of Godot (the default is also true).
+            use-dotnet: false
+            # Include the Godot Export Templtes (the default is false).
+            include-templates: true
+  build-clients:
+    name: Build clients
+    runs-on: ubuntu-latest
+    strategy:
+      # Don't cancel other OS runners if one fails.
+      fail-fast: false
+      matrix:
+        target: [windows, linux]
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+
+      - name: Prepare dist 
+        run: mkdir -p dist/${{ matrix.target }}
+
+      - name: Verify Setup
+        run: godot --version
+
+      - name: Export release
+        run: godot --headless --export-release ${{ matrix.target }}
+
+      - uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.target }}
+          ITCH_GAME: ${{ secrets.ITCHIO_GAME }}
+          ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
+          PACKAGE: dist/${{ matrix.target }}
