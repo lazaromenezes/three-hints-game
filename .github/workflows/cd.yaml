@@ -8,6 +8,7 @@ on:
 jobs:
   prepare-builder:
     name: Prepare builder environment
+    runs-on: ubuntu-latest
     steps:
       - uses: chickensoft-games/setup-godot@v1
         name: Setup Godot
