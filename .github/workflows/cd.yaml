@@ -74,6 +74,4 @@ jobs:
           context: ./dist/linux_server
           file: ./Dockerfile
           push: true
-          tags: |
-            ${{ secrets.REGISTRY_HOST }}/pistas-server:latest
-            ${{ secrets.REGISTRY_HOST }}/pistas-server:${{ github.run_number }}
+          tags: ${{ secrets.REGISTRY_HOST }}/pistas-server
