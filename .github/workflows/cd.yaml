@@ -6,11 +6,10 @@ on:
     - main
 
 jobs:
-  build-clients:
-    name: Build clients
+  build-desktop-clients:
+    name: Build desktop clients
     runs-on: ubuntu-latest
     strategy:
-      # Don't cancel other OS runners if one fails.
       fail-fast: false
       matrix:
         target: [windows, linux]
@@ -28,9 +27,6 @@ jobs:
       - name: Prepare dist 
         run: mkdir -p dist/${{ matrix.target }}
 
-      - name: Verify Setup
-        run: godot --version
-
       - name: Export release
         run: godot --headless --export-release ${{ matrix.target }}
 
@@ -41,3 +37,43 @@ jobs:
           ITCH_GAME: ${{ secrets.ITCHIO_GAME }}
           ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
           PACKAGE: dist/${{ matrix.target }}
+
+  build-server-image:
+    name: Build server image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+      
+      - uses: chickensoft-games/setup-godot@v1
+        name: Setup Godot
+        with:
+          version: 4.3.0-beta.2 
+          use-dotnet: false
+          include-templates: true
+
+      - name: Prepare dist 
+        run: mkdir -p dist/linux_server
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Export release
+        run: godot --headless --export-release linux_server
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.REGISTRY_HOST }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PWD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./dist/linux_server
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.REGISTRY_HOST }}/pistas-server:latest
+            ${{ secrets.REGISTRY_HOST }}/pistas-server:${{ github.run_number }}
